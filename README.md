@@ -42,7 +42,7 @@ Os dados são salvos localmente em arquivos (`.txt` ou `.dat`).
     <td align="center">
       <a href="https://github.com/liusife">
         <img src="https://github.com/liusife.png" width="80px;" alt="Luis"/><br>
-        <sub><b>Luis Henrique</b></sub>
+        <sub><b>Luis Henrique aa</b></sub>
       </a>
     </td>
     <td align="center">
