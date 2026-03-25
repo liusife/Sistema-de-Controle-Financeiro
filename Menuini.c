@@ -5,13 +5,13 @@
 int registro()
 {
 	system("cls");
-	char nomecom[50];
-	int nu;
+	char nomecom[50], senha[100], senhacom[100];
+	int nu, cpf, x;
 	
+	x = 10;
 	setlocale(LC_ALL, "Portuguese");
 	printf("Digite o seu nome completo: \n");
 	fgets(nomecom, sizeof(nomecom), stdin);
-	system("cls");
 	printf("Verifique se seu nome está correto: %s \n", nomecom);
 	printf("1- Sim\n");
 	printf("2- Não\n");
@@ -19,11 +19,31 @@ int registro()
 	getchar();
 	
 	if(nu == 2){
+		system("cls");
 		registro();
 	}
-	printf("Usuário registrado!\n");
-	system("pause");
+	printf("Digite o seu CPF: \n");
+	scanf("%d", &cpf);
+	getchar();
 	
+	while(x != 0)
+	{
+		printf("Crie uma senha: \n");
+		scanf("%s", &senha);
+		getchar();
+		printf("Confirme a sua senha: \n");
+		scanf("%s", &senhacom);
+		getchar();
+		
+		if(senhacom == senha){
+			printf("Usuário registrado com sucesso!\n");
+			x = 0;
+		}else{
+		printf("Senha incorreta! Tente novamente.\n");
+		system("pause");
+		system("cls");
+		}
+}
 	return 0;
 }
 
