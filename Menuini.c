@@ -4,12 +4,14 @@
 
 int registro()
 {
+	system("cls");
 	char nomecom[50];
 	int nu;
 	
 	setlocale(LC_ALL, "Portuguese");
 	printf("Digite o seu nome completo: \n");
 	fgets(nomecom, sizeof(nomecom), stdin);
+	system("cls");
 	printf("Verifique se seu nome está correto: %s \n", nomecom);
 	printf("1- Sim\n");
 	printf("2- Não\n");
@@ -25,10 +27,12 @@ int registro()
 	return 0;
 }
 
-int main(int n)
+int main()
 {
 	setlocale(LC_ALL, "Portuguese");
 	
+	int n;
+		
 	do{
 		system("cls");
 		
@@ -37,6 +41,7 @@ int main(int n)
 	printf("2- Login\n");
 	printf("3- Sair\n");
 	scanf("%d", &n);
+	getchar();
 		
 	switch(n)
 	{
