@@ -3,7 +3,7 @@
 
 int escolha;
 
-void menuTransacoes()
+void menutransacao();
 {
     printf("------- Transações -------\n");
     printf("[1] Registrar transações\n");

@@ -42,8 +42,8 @@
                     scanf("%d", &parcelas);
                     printf("Adicionar descrição da transação: ");
                     scanf("%s", descricaoc);
-                    printf("     ");
-                    printf("     Selecione o tipo de transação:     \n");    // entrada ou saída   //* pprocedimento*\\ 
+                    printf("\n");
+                    printf("     Selecione o tipo de transação:     \n");    // entrada ou saída   //* procedimento*\\ 
                     printf("[1] Entrada\n");
                     printf("[2] Saída\n");
                     scanf("%d",&tipotrans);
