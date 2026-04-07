@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <locale.h>
 #include <stdlib.h>
+#include "menu.h"
 
 #define texto "Opção inválida. Escolha uma das opções abaixo:"
 
@@ -12,15 +13,8 @@
     float trans, vtrans;
     char descricaoc[50], dtrans[50];
     
-        printf("------- Transações -------\n");                     //*essa parte pode ser um procedimento*
-        printf("[1] Registrar transações \n");
-        printf("[2] Visualizar transações \n");
-        printf("[3] Editar transações \n");
-        printf("[4] Excluir despesas \n");
-        scanf("%d",&escolha);
-        system("clear");
+        menutransacao();
         
-
         switch (escolha)
         {
         case 1:
@@ -104,7 +98,8 @@
         default:
 
         printf("%s\n",texto);
-        //menu transações
+        
+        menutransacao();
             break;
         }
 
