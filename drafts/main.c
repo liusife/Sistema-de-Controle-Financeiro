@@ -14,6 +14,7 @@
     char descricaoc[50], dtrans[50];
     
         menutransacao();
+        scanf("%d",&escolha);
         
         switch (escolha)
         {
@@ -43,7 +44,7 @@
                     printf("Adicionar descrição da transação: ");
                     scanf("%s", descricaoc);
                     printf("\n");
-                    printf("     Selecione o tipo de transação:     \n");    // entrada ou saída   //* procedimento*\\ 
+                    printf("     Selecione o tipo de transação:     \n");    //entradaesaída    
                     printf("[1] Entrada\n");
                     printf("[2] Saída\n");
                     scanf("%d",&tipotrans);
@@ -67,7 +68,7 @@
                 printf("Adicione valor da transação: R$ ");
                 scanf("%f", &vtrans);
                 printf("Adiconar descrição da transação:");
-                scanf("%s", &dtrans);
+                scanf("%s",dtrans);
                 printf("      ");
                 printf("     Selecione o tipo de transação:     \n");    // entrada ou saída
                 printf("[1] Entrada\n");
@@ -100,6 +101,8 @@
         printf("%s\n",texto);
         
         menutransacao();
+        scanf("%d",&escolha);
+        
             break;
         }
 
