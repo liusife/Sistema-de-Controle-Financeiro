@@ -2,9 +2,9 @@
 #include <locale.h>
 #include <stdlib.h>
 
-#define texto "Opção inválida. Escolha uma das opções abaixo:"
+#define texto "OpÃ§Ã£o invÃ¡lida. Escolha uma das opÃ§Ãµes abaixo:"
 
-    //=============== protótipos ======
+    //=============== protÃ³tipos ======
     int menutransacoes();
     int escolhadousuario();
 
@@ -31,16 +31,16 @@
                  {
                  case 1:  //emissao
 
-                    printf("  Escolha uma das opções abaixo: \n ");
-                    printf("[1] Selecionar tipo de emissão \n");
-                    printf("[2] Voltar para o menu \n");
+                    printf("  Escolha uma das opÃ§Ãµes abaixo: \n ");
+                    printf("[1] Selecionar tipo de emissÃ£o \n");
+                    printf(" [2] Voltar para o menu \n");
                     scanf("%d",&escolha1);
 
                     if (escolha1 == 1){
 
-                        printf("   Selecione o tipo de emissão:   \n");
-                        printf("[1] Crédito \n");
-                        printf("[2] Débito \n");
+                        printf("   Selecione o tipo de emissÃ£o:   \n");
+                        printf("[1] CrÃ©dito \n");
+                        printf("[2] DÃ©bito \n");
                         printf("[3] Pix \n");
                         printf("[4] Pix, saque/troca \n");
                         scanf("%d",&emissao);
@@ -48,18 +48,18 @@
                         switch (emissao) //tipo de emissao
                         {
                         case 1:
-                            printf(" Adicione o valor transação: R$");
+                            printf(" Adicione o valor transaÃ§Ã£o: R$");
                             scanf("%f", &emissao1.valor); 
 
                             printf(" Adicione a quantidade de parcelas: ");
                             scanf("%d",&emissao1.parcelas);
                             getchar();
 
-                            printf(" Adicione a descrição da transação: ");
+                            printf(" Adicione a descriÃ§Ã£o da transaÃ§Ã£o: ");
                             fgets(emissao1.descricao, 65, stdin);
                             printf(" \n ");
 
-                            printf(" A emissão é: [1] Entrada ou [2] saída");
+                            printf(" A emissÃ£o Ã© [1] Entrada ou [2] saÃ­da");
                             scanf("%d",&emissao1.tipo);
 
                             if (emissao1.tipo == 1){
@@ -88,16 +88,16 @@
                         case 2:
                         case 3:
                         case 4:
-                         printf(" Adicione o valor transação: R$");
+                         printf(" Adicione o valor transaÃ§Ã£o: R$");
                             scanf("%f", &emissao1.valor); 
 
                             getchar();
 
-                            printf(" Adicione a descrição da transação: ");
+                            printf(" Adicione a descriÃ§Ã£o da transaÃ§Ã£o: ");
                             fgets(emissao1.descricao, 65, stdin);
                             printf(" \n ");
 
-                            printf(" A emissão é: [1] Entrada ou [2] saída");
+                            printf(" A emissÃ£o Ã© [1] Entrada ou [2] saÃ­da");
                             scanf("%d",&emissao1.tipo);
 
                         
@@ -123,17 +123,17 @@
 
     }
 
-    //============ Função transação ============
+    //============ FunÃ§Ã£o transaÃ§Ã£o ============
     int menutransacoes(){
 
 
         int escolha; 
 
     printf("\n------- TRANSACOES -------\n");
-    printf("[1] Registrar transação\n");
-    printf("[2] Listar transações\n");
-    printf("[3] Editar transação\n");
-    printf("[4] Excluir transação\n");
+    printf("[1] Registrar transaÃ§Ã£o\n");
+    printf("[2] Listar transaÃ§Ãµes\n");
+    printf("[3] Editar transaÃ§Ã£o\n");
+    printf("[4] Excluir transaÃ§Ã£o\n");
     printf("[0] Sair\n");
     printf("Escolha: ");
 
@@ -142,13 +142,13 @@
     return escolha;
     }
 
-    //=============== Função retornar ==============
+    //=============== FunÃ§Ã£o retornar ==============
     int escolhadousuario (){
 
         int retorno;
 
-        printf(" Você deseja: \n");
-        printf("[1] Retornar para o menu de transações");
+        printf(" VocÃª deseja: \n");
+        printf("[1] Retornar para o menu de transaÃ§Ãµes");
         printf("[2] Retornar para o menu principal \n");
         scanf("%d",&retorno);
 
