@@ -2,11 +2,13 @@
 #include <locale.h>
 #include <stdlib.h>
 
-#define texto "Opção inválida. Escolha uma das opções abaixo:"
+#define texto "Opção inválida. Escolha uma das opçõees abaixo:"
 
     //=============== protótipos ======
     int menutransacoes();
     int escolhadousuario();
+    void limparTela();
+    void returnmenu();
 
     //=============== struct ===========
 
@@ -20,7 +22,7 @@
     int main(){
 
         struct credito emissao1;
-        int opcao, escolha1, emissao, volta;
+        int opcao, escolha1, escolha2, emissao, volta;
 
             setlocale(LC_ALL,"Portuguese");
 
@@ -29,7 +31,7 @@
 
                  switch (opcao)  
                  {
-                 case 1:  //emissao
+                 case 1:  //[1] selecioanar tipo de emissao
 
                     printf("  Escolha uma das opções abaixo: \n ");
                     printf("[1] Selecionar tipo de emissão \n");
@@ -59,7 +61,7 @@
                             fgets(emissao1.descricao, 65, stdin);
                             printf(" \n ");
 
-                            printf(" A emissão é: [1] Entrada ou [2] saída");
+                            printf(" A emissão é [1] Entrada ou [2] saída ?\n");
                             scanf("%d",&emissao1.tipo);
 
                             if (emissao1.tipo == 1){
@@ -77,8 +79,9 @@
                         volta = escolhadousuario();
 
                          if (volta == 1){
-                            printf("Voltando para o menu inicial...");
-                            system("pause");
+
+                            returnmenu();
+                            limparTela();
                             continue; // voltar para menutransacoes()
 
                          } else {
@@ -97,21 +100,50 @@
                             fgets(emissao1.descricao, 65, stdin);
                             printf(" \n ");
 
-                            printf(" A emissão é: [1] Entrada ou [2] saída");
+                            printf(" A emissão é [1] Entrada ou [2] saída");
                             scanf("%d",&emissao1.tipo);
-
+ 
                         
                         default: 
                         printf("%s", texto);
                             break;
                         }
 
+                    } else {
+                            returnmenu();
+                            limparTela();
+                            continue; // voltar para menutransacoes()
+                           
+
                     }
 
+                    break;
 
+                    case 2:  //visualizar transações
+                    printf("  Escolha uma das opções abaixo: \n ");
+                    printf("[1] Exibir lista de transações \n");
+                    printf("[2] Voltar para o menu \n");
+                    scanf("%d",&escolha2);
+
+                    if (escolha2 == 1){
+
+                        //exibir lista de transações
+                        escolhadousuario();
+
+                    } else {
+
+                        returnmenu();
+                        limparTela();
+                        continue; // voltar para menutransacoes()
+                    }
 
                     break;
-                 
+                    
+                    case 3:
+
+                    printf("teste");
+
+
                  default:
                     break;
                  }
@@ -138,6 +170,8 @@
     printf("Escolha: ");
 
     scanf("%d", &escolha);
+    system("pause");
+    limparTela();
 
     return escolha;
     }
@@ -154,5 +188,19 @@
 
         return retorno;
     }
+    //=============== Função Limpar tela =============
+    void limparTela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
 
+    void returnmenu(){
+        
+        printf("\nVoltando para o menu inicial...\n");
+        system("pause");
+
+    }
     
