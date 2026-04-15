@@ -22,7 +22,7 @@
     int main(){
 
         struct credito emissao1;
-        int opcao, escolha1, escolha2, emissao, volta;
+        int opcao, escolha1, escolha2, escolha3, escolha4, emissao, volta;
 
             setlocale(LC_ALL,"Portuguese");
 
@@ -141,8 +141,42 @@
                     
                     case 3:
 
-                    printf("teste");
+                    printf("  Escolha uma das opções abaixo: \n ");
+                    printf("[1] Exibir lista de transações por ID\n");
+                    printf("[2] Voltar para o menu \n");
+                    scanf("%d",&escolha3);
 
+                    if (escolha2 == 1){
+
+                        //usuario escolhe qual transação vai querer editar
+                        //lista atualizada de transações é exibida
+                        //opção de editar algum item
+
+                    } else{
+
+                        returnmenu();
+                        limparTela();
+                        continue;
+
+                    }
+                    break; 
+
+                    case 4:
+
+                     printf("  Escolha uma das opções abaixo: \n ");
+                    printf("[1] Exibir lista de transações por ID\n");
+                    printf("[2] Voltar para o menu \n");
+                    scanf("%d",&escolha4);
+
+                    if(escolha == 4){
+                        //usuário escolhe qual transação quer exluir
+                        //outras funionalidade...
+                    } else {
+
+                        returnmenu();
+                        limparTela();
+                        continue;
+                    }
 
                  default:
                     break;
@@ -203,4 +237,3 @@
         system("pause");
 
     }
-    
