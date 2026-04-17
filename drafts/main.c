@@ -168,7 +168,7 @@
                     printf("[2] Voltar para o menu \n");
                     scanf("%d",&escolha4);
 
-                    if(escolha == 4){
+                    if(escolha4 == 4){
                         //usuário escolhe qual transação quer exluir
                         //outras funionalidade...
                     } else {
