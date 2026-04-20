@@ -1,13 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "despesas.h"
+#include "despesas_acoes.h"
+#include "utils.h"
 
 void menudespesas()
 {
     int n;
     do
     {
-        system("cls");
+        limparTela(); 
         printf("--- CONTROLE DE DESPESAS ---\n");
         printf("1- Adicionar Despesa\n");
         printf("2- Visualizar Despesas\n");
@@ -15,8 +17,12 @@ void menudespesas()
         printf("4- Excluir Despesa\n");
         printf("5- Retornar ao Menu Principal\n");
         printf("Escolha: ");
-        scanf("%d", &n);
-        getchar();
+        
+        if (scanf("%d", &n) != 1) {
+            limparBuffer();
+            continue;
+        }
+        limparBuffer();
 
         switch (n)
         {
@@ -34,10 +40,11 @@ void menudespesas()
             break;
         case 5:
             printf("Retornando ao Menu Principal...");
+            pausar();
             break;
         default:
             printf("Opcao invalida!");
-            system("pause");
+            pausar();
         }
     } while (n != 5);
 }
