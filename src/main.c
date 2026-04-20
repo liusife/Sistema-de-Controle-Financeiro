@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "usuario.h"
+#include "utils.h"
 
 int main()
 {
@@ -8,15 +9,19 @@ int main()
 
     do
     {
-        system("cls");
+        limparTela();
 
         printf("=====MENU=====\n");
         printf("1- CADASTRO\n");
         printf("2- LOGIN\n");
         printf("3- SAIR\n");
         printf("\nDigite a opcao desejada: ");
-        scanf("%d", &n);
-        getchar();
+        
+        if (scanf("%d", &n) != 1) {
+            limparBuffer();
+            continue;
+        }
+        limparBuffer();
 
         switch(n)
         {
@@ -31,7 +36,7 @@ int main()
                 break;
             default:
                 printf("\nOpcao invalida!\n");
-                system("pause");
+                pausar();
                 break;
         }
 
