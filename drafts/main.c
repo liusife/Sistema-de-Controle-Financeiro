@@ -14,7 +14,8 @@
 
     struct credito {
         float valor;
-        int parcelas,tipo; // 1- entrada | 2-saida
+        int parcelas;
+        char tipo; // 1- entrada | 2-saida
         char descricao[65];
     };
 
@@ -22,7 +23,7 @@
     int main(){
 
         struct credito emissao1;
-        int opcao, escolha1, escolha2, escolha3, escolha4, emissao, volta;
+        char opcao, escolha1, emissao, escolha2, escolha3, escolha4,  volta;
 
             setlocale(LC_ALL,"Portuguese");
 
@@ -31,40 +32,40 @@
 
                  switch (opcao)  
                  {
-                 case 1:  //[1] selecioanar tipo de emissao
-
-                    printf("  Escolha uma das opções abaixo: \n ");
+                 case '1':  //[1] selecioanar tipo de emissao
+                    
+                    printf("\tEscolha uma das opções abaixo:\n ");
                     printf("[1] Selecionar tipo de emissão \n");
                     printf("[2] Voltar para o menu \n");
-                    scanf("%d",&escolha1);
+                    scanf(" %c",&escolha1);
 
-                    if (escolha1 == 1){
+                    if (escolha1 == '1'){
 
-                        printf("   Selecione o tipo de emissão:   \n");
+                        printf("\tSelecione o tipo de emissão:   \n");
                         printf("[1] Crédito \n");
                         printf("[2] Débito \n");
                         printf("[3] Pix \n");
                         printf("[4] Pix, saque/troca \n");
-                        scanf("%d",&emissao);
+                        scanf(" %c",&emissao);
 
                         switch (emissao) //tipo de emissao
                         {
-                        case 1:
+                        case '1':
                             printf(" Adicione o valor transação: R$");
                             scanf("%f", &emissao1.valor); 
+                            getchar();
 
                             printf(" Adicione a quantidade de parcelas: ");
                             scanf("%d",&emissao1.parcelas);
-                            getchar();
 
                             printf(" Adicione a descrição da transação: ");
                             fgets(emissao1.descricao, 65, stdin);
                             printf(" \n ");
 
                             printf(" A emissão é [1] Entrada ou [2] saída ?\n");
-                            scanf("%d",&emissao1.tipo);
+                            scanf(" %c",&emissao1.tipo);
 
-                            if (emissao1.tipo == 1){
+                            if (emissao1.tipo == '1'){
 
                                 //adicionar valor ao saldo
                                 //mostrar saldo atualizado
@@ -78,31 +79,31 @@
 
                         volta = escolhadousuario();
 
-                         if (volta == 1){
+                         if (volta == '1'){
 
                             returnmenu();
                             limparTela();
                             continue; // voltar para menutransacoes()
 
                          } else {
-                            opcao = 0;
+                            opcao = '0';
                          }
                             break;
-                        case 2:
-                        case 3:
-                        case 4:
+                        case '2':
+                        case '3':
+                        case '4':
                          printf(" Adicione o valor transação: R$");
                             scanf("%f", &emissao1.valor); 
-
                             getchar();
 
                             printf(" Adicione a descrição da transação: ");
-                            fgets(emissao1.descricao, 65, stdin);
+                            fgets(emissao1.descricao, 65, stdin);;
                             printf(" \n ");
 
-                            printf(" A emissão é [1] Entrada ou [2] saída");
-                            scanf("%d",&emissao1.tipo);
- 
+                            printf(" A emissão é [1] Entrada ou [2] saída \n");
+                            scanf(" %c",&emissao1.tipo);
+                         
+                        break;
                         
                         default: 
                         printf("%s", texto);
@@ -119,13 +120,13 @@
 
                     break;
 
-                    case 2:  //visualizar transações
-                    printf("  Escolha uma das opções abaixo: \n ");
+                    case '2':  //visualizar transações
+                    printf("\tEscolha uma das opções abaixo: \n ");
                     printf("[1] Exibir lista de transações \n");
                     printf("[2] Voltar para o menu \n");
-                    scanf("%d",&escolha2);
+                    scanf(" %c",&escolha2);
 
-                    if (escolha2 == 1){
+                    if (escolha2 == '1'){
 
                         //exibir lista de transações
                         escolhadousuario();
@@ -139,14 +140,14 @@
 
                     break;
                     
-                    case 3:
+                    case '3':
 
-                    printf("  Escolha uma das opções abaixo: \n ");
+                    printf("\tEscolha uma das opções abaixo: \n ");
                     printf("[1] Exibir lista de transações por ID\n");
                     printf("[2] Voltar para o menu \n");
-                    scanf("%d",&escolha3);
+                    scanf(" %c",&escolha3);
 
-                    if (escolha2 == 1){
+                    if (escolha3 == '1'){
 
                         //usuario escolhe qual transação vai querer editar
                         //lista atualizada de transações é exibida
@@ -161,14 +162,14 @@
                     }
                     break; 
 
-                    case 4:
+                    case '4':
 
-                     printf("  Escolha uma das opções abaixo: \n ");
+                     printf("\tEscolha uma das opções abaixo: \n ");
                     printf("[1] Exibir lista de transações por ID\n");
                     printf("[2] Voltar para o menu \n");
-                    scanf("%d",&escolha4);
+                    scanf(" %c",&escolha4);
 
-                    if(escolha4 == 4){
+                    if(escolha4 == '1'){
                         //usuário escolhe qual transação quer exluir
                         //outras funionalidade...
                     } else {
@@ -183,7 +184,7 @@
                  }
 
 
-            } while (opcao != 0);
+            } while (opcao != '0');
 
             return 0;
 
@@ -192,9 +193,9 @@
     //============ Função transação ============
     int menutransacoes(){
 
+        char escolha;
 
-        int escolha; 
-
+        limparTela();
     printf("\n------- TRANSAÇÕES -------\n");
     printf("[1] Registrar transação\n");
     printf("[2] Listar transações\n");
@@ -203,7 +204,7 @@
     printf("[0] Sair\n");
     printf("Escolha: ");
 
-    scanf("%d", &escolha);
+    scanf(" %c",&escolha);
     system("pause");
     limparTela();
 
@@ -213,12 +214,12 @@
     //=============== Função retornar ==============
     int escolhadousuario (){
 
-        int retorno;
+        char retorno;
 
-        printf(" Você deseja: \n");
-        printf("[1] Retornar para o menu de transações");
+        printf("\tVocê deseja: \n");
+        printf("[1] Retornar para o menu de transações\n");
         printf("[2] Retornar para o menu principal \n");
-        scanf("%d",&retorno);
+        scanf(" %c",&retorno);
 
         return retorno;
     }
@@ -231,9 +232,10 @@
     #endif
 }
 
+    //=============== Fução para retornar para o menu =============
     void returnmenu(){
         
-        printf("\nVoltando para o menu inicial...\n");
+        printf("\n\tVoltando para o menu inicial...\n");
         system("pause");
 
     }
