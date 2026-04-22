@@ -1,22 +1,20 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "usuario.h"
 #include "sistema.h"
+#include "despesas.h"
 #include "utils.h"
 
-int main()
+void menuPrincipal()
 {
     int n;
 
     do
     {
         limparTela();
-
-        printf("===== BEM-VINDO! =====\n");
-        printf("1- CADASTRO\n");
-        printf("2- LOGIN\n");
-        printf("3- SAIR\n");
-        printf("\nDigite a opcao desejada: ");
+        printf("===== MENU =====\n");
+        printf("1- Gerenciar Despesas\n");
+        printf("2- Logout\n");
+        printf("\nEscolha uma opcao: ");
 
         if (scanf("%d", &n) != 1)
         {
@@ -28,24 +26,16 @@ int main()
         switch (n)
         {
         case 1:
-            registro();
+            menudespesas();
             break;
         case 2:
-            if (login() == 1)
-            {
-                menuPrincipal();
-            }
-            break;
-        case 3:
-            printf("\nVolte sempre!");
+            printf("\nSaindo da conta...\n");
+            pausar();
             break;
         default:
             printf("\nOpcao invalida!\n");
             pausar();
             break;
         }
-
-    } while (n != 3);
-
-    return 0;
+    } while (n != 2);
 }
