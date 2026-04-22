@@ -151,7 +151,7 @@ int login()
                 limparTela();
                 printf("Logado com sucesso!\n");
                 pausar();
-                break;
+                return 1;
             }
             else
             {

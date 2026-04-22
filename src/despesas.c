@@ -9,7 +9,7 @@ void menudespesas()
     int n;
     do
     {
-        limparTela(); 
+        limparTela();
         printf("--- CONTROLE DE DESPESAS ---\n");
         printf("1- Adicionar Despesa\n");
         printf("2- Visualizar Despesas\n");
@@ -17,8 +17,9 @@ void menudespesas()
         printf("4- Excluir Despesa\n");
         printf("5- Retornar ao Menu Principal\n");
         printf("Escolha: ");
-        
-        if (scanf("%d", &n) != 1) {
+
+        if (scanf("%d", &n) != 1)
+        {
             limparBuffer();
             continue;
         }

@@ -9,7 +9,6 @@ typedef struct
     float valor;
 } Despesa;
 
-
 void registrardespesa();
 void visualizardespesa();
 void editardespesa();
