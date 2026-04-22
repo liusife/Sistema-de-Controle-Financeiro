@@ -2,33 +2,33 @@
 #include <stdlib.h>
 #include <string.h>
 #include "usuario.h"
+#include "utils.h"
 
-char nomecom[50], senha[100];
-int cpf;
+Usuario userLogado;
 
 int valemail()
 {
     int nu;
-    char email[50];
 
     do
     {
-        printf("Digite o seu email: \n\n");
-        fgets(email, sizeof(email), stdin);
+        printf("Digite o seu email: ");
+        fgets(userLogado.email, 50, stdin);
+        removerQuebraLinha(userLogado.email);
 
-        if(strchr(email, '@') == NULL)
+        if (strchr(userLogado.email, '@') == NULL)
         {
             printf("\nEmail invalido!\n\n");
             continue;
         }
 
-        printf("\nVerifique se seu email esta correto: %s \n", email);
+        printf("\nVerifique se seu email esta correto: %s \n", userLogado.email);
         printf("1- Sim\n2- Nao\nR: ");
         scanf("%d", &nu);
-        getchar();
-        system("cls");
+        limparBuffer();
+        limparTela();
 
-    } while(nu != 1);
+    } while (nu != 1);
 
     return 0;
 }
@@ -39,68 +39,66 @@ int valcpf()
 
     do
     {
-        printf("Digite o seu CPF: \n\n");
+        printf("Digite o seu CPF (11 digitos): \n\n");
+        fgets(userLogado.cpf, 12, stdin);
+        removerQuebraLinha(userLogado.cpf);
+        limparBuffer();
 
-        if(scanf("%d", &cpf) != 1)
+        if (strlen(userLogado.cpf) < 11)
         {
-            printf("\nCPF invalido!\n");
-            while(getchar() != '\n');
+            printf("\nCPF invalido! (Deve ter 11 digitos)\n");
+            pausar();
+            limparTela();
             continue;
         }
 
-        getchar();
-
-        if(cpf <= 0)
-        {
-            printf("\nCPF invalido!\n");
-            continue;
-        }
-
-        printf("\nVerifique se seu CPF esta correto: %d \n", cpf);
+        printf("\nVerifique se seu CPF esta correto: %s \n", userLogado.cpf);
         printf("1- Sim\n2- Nao\nR: ");
         scanf("%d", &nu);
-        getchar();
-        system("cls");
+        limparBuffer();
+        limparTela();
 
-    } while(nu != 1);
+    } while (nu != 1);
 
     return 0;
 }
 
 int registro()
 {
-    system("cls");
+    limparTela();
     char senhacom[100];
     int nu;
 
     do
     {
         printf("Digite o seu nome completo: \n\n");
-        fgets(nomecom, sizeof(nomecom), stdin);
+        fgets(userLogado.nome, 50, stdin);
+        removerQuebraLinha(userLogado.nome);
 
-        if(strlen(nomecom) <= 1)
+        if (strlen(userLogado.nome) <= 1)
         {
             printf("\nNome invalido!\n\n");
             continue;
         }
 
-        printf("\nVerifique se seu nome esta correto: %s \n", nomecom);
+        printf("\nVerifique se seu nome esta correto: %s \n", userLogado.nome);
         printf("1- Sim\n2- Nao\nR: ");
         scanf("%d", &nu);
-        getchar();
-        system("cls");
+        limparBuffer();
+        limparTela();
 
-    } while(nu != 1);
+    } while (nu != 1);
 
     valemail();
     valcpf();
 
-    while(1)
+    while (1)
     {
         printf("Crie uma senha: ");
-        fgets(senha, sizeof(senha), stdin);
+        fgets(userLogado.senha, 100, stdin);
+        removerQuebraLinha(userLogado.senha);
 
-        if(strlen(senha) <= 1)
+        if (strlen(userLogado.senha) <= 1)
         {
             printf("Senha invalida!\n");
             continue;
@@ -108,19 +106,20 @@ int registro()
 
         printf("Confirme a sua senha: ");
         fgets(senhacom, sizeof(senhacom), stdin);
+        removerQuebraLinha(senhacom);
 
-        if(strcmp(senhacom, senha) == 0)
+        if (strcmp(senhacom, userLogado.senha) == 0)
         {
-            system("cls");
+            limparTela();
             printf("Usuario cadastrado com sucesso!\n");
-            system("pause");
+            pausar();
             break;
         }
         else
         {
             printf("Senha incorreta! Tente novamente.\n");
-            system("pause");
-            system("cls");
+            pausar();
+            limparTela();
         }
     }
 
@@ -130,34 +129,29 @@ int registro()
 int login()
 {
     char senhalogin[100];
-    int cpflogin;
+    char cpflogin[12];
 
-    system("cls");
+    limparTela();
 
-    while(1)
+    while (1)
     {
         printf("Digite o seu CPF: \n\n");
+        fgets(cpflogin, sizeof(cpflogin), stdin);
+        removerQuebraLinha(cpflogin);
+        limparBuffer();
 
-        if(scanf("%d", &cpflogin) != 1)
-        {
-            printf("\nCPF invalido!\n");
-            while(getchar() != '\n');
-            continue;
-        }
-
-        getchar();
-
-        if(cpflogin == cpf)
+        if (strcmp(cpflogin, userLogado.cpf) == 0)
         {
             printf("Digite a sua senha: ");
             fgets(senhalogin, sizeof(senhalogin), stdin);
+            removerQuebraLinha(senhalogin);
 
-            if(strcmp(senhalogin, senha) == 0)
+            if (strcmp(senhalogin, userLogado.senha) == 0)
             {
-                system("cls");
+                limparTela();
                 printf("Logado com sucesso!\n");
-                system("pause");
-                break;
+                pausar();
+                return 1;
             }
             else
             {
@@ -166,11 +160,11 @@ int login()
         }
         else
         {
-            printf("CPF invalido!\n");
+            printf("CPF nao cadastrado ou incorreto!\n");
         }
 
-        system("pause");
-        system("cls");
+        pausar();
+        limparTela();
     }
 
     return 0;
