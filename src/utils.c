@@ -14,8 +14,12 @@ void limparTela()
 
 void pausar()
 {
+#ifdef _WIN32
+    system("pause");
+#else
     printf("\nPressione ENTER para continuar...");
     getchar();
+#endif
 }
 
 void limparBuffer()
