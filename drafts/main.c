@@ -1,0 +1,308 @@
+#include <stdio.h>
+#include <locale.h>
+#include <stdlib.h>
+
+#define texto "Opção inválida! Tente novamente.\n"
+
+    //=============== protótipos =============
+    int menutransacoes();
+    int escolhadousuario();
+    void limparTela();
+    void returnmenu();
+
+    //=============== struct =============
+
+    struct credito {
+        float valor;
+        int parcelas;
+        char tipo; // 1- entrada | 2-saida
+        char descricao[65];
+    };
+
+    // =============== main =============
+    int main(){
+
+        struct credito emissao1;
+        char opcao, escolha1, emissao, escolha2, escolha3, escolha4,  volta;
+
+            setlocale(LC_ALL,"Portuguese");
+
+            do {
+                 opcao = menutransacoes();
+
+                 switch (opcao)  
+                 {
+                 case '1':  //[1] selecioanar tipo de emissao
+                    
+                    do {              // inicio || para erros
+                    printf("\tEscolha uma das opções abaixo:\n ");
+                    printf("[1] Selecionar tipo de emissão \n");
+                    printf("[2] Voltar para o menu \n");
+                    scanf(" %c",&escolha1);
+
+                    if (escolha1 < '1' || escolha1 > '2'){    
+                        printf("%s", texto);
+                        system("pause");
+                        limparTela();
+                    }
+                    } while (escolha1 < '1' || escolha1 > '2'); // fim | para erros
+
+                    if (escolha1 == '1'){
+                        do {                // inicio || para erros
+
+                        printf("\tSelecione o tipo de emissão:   \n");
+                        printf("[1] Crédito \n");
+                        printf("[2] Débito \n");
+                        printf("[3] Pix \n");
+                        printf("[4] Pix, saque/troca \n");
+                        scanf(" %c",&emissao);
+
+                        if (emissao < '1' || emissao > '4'){
+                            printf("%s", texto);
+                            system("pause");
+                            limparTela();
+                        }
+                        } while (emissao < '1' || emissao > '4'); // fim | para erros
+
+                        switch (emissao) //tipo de emissao
+                        {
+                        case '1':
+                            printf(" Adicione o valor transação: R$");
+                            scanf("%f", &emissao1.valor); 
+                            getchar();
+
+                            printf(" Adicione a quantidade de parcelas: ");
+                            scanf("%d",&emissao1.parcelas);
+                            getchar();
+
+                            printf(" Adicione a descrição da transação: ");
+                            fgets(emissao1.descricao, 65, stdin);
+                            printf(" \n ");
+
+                            do{
+
+                            printf(" A emissão é [1] Entrada ou [2] saída ?\n");
+                            scanf(" %c",&emissao1.tipo);
+
+                            if (emissao1.tipo < '1' || emissao1.tipo > '2'){ // inicio | para erros
+                                printf("%s", texto);
+                                system("pause");
+                                limparTela();
+                            }
+                            } while (emissao1.tipo < '1' || emissao1.tipo > '2'); // fim | para erros
+
+                            if (emissao1.tipo == '1'){
+
+                                //adicionar valor ao saldo
+                                //mostrar saldo atualizado
+
+                            } else {
+
+                                //subtrair valor do saldo
+                                //mostrar saldo atualizado
+                            }
+
+                        volta = escolhadousuario();
+
+                         if (volta == '1'){
+
+                            returnmenu();
+                            limparTela();
+                            continue; // voltar para menutransacoes()
+
+                         } else {
+                            opcao = '0';
+                         }
+
+                            break;
+
+                        case '2':
+                        case '3':
+                        case '4':
+
+                         printf(" Adicione o valor transação: R$");
+                            scanf("%f", &emissao1.valor); 
+                            getchar();
+
+                            printf(" Adicione a descrição da transação: ");
+                            fgets(emissao1.descricao, 65, stdin);;
+                            printf(" \n ");
+
+                            printf(" A emissão é [1] Entrada ou [2] saída \n");
+                            scanf(" %c",&emissao1.tipo);
+                         
+                        break;
+                        
+                        default: 
+                        printf("%s", texto);
+                            break;
+                        }
+
+                    } else {
+                            returnmenu();
+                            limparTela();
+                            continue; // voltar para menutransacoes()
+                           
+                    }
+
+                    break;
+
+                    case '2':  //visualizar transações
+
+                    do {     // inicio || para erros
+                    printf("\tEscolha uma das opções abaixo: \n ");
+                    printf("[1] Exibir lista de transações \n");
+                    printf("[2] Voltar para o menu \n");
+                    scanf(" %c",&escolha2);
+
+                    if (escolha2 < '1' || escolha2 > '2'){
+                        printf("%s", texto);
+                        system("pause");
+                        limparTela();
+                    }
+                    } while (escolha2 < '1' || escolha2 > '2');  // fim | para erros
+
+                    if (escolha2 == '1'){
+
+                        //exibir lista de transações
+                        escolhadousuario();
+
+                    } else {
+
+                        returnmenu();
+                        limparTela();
+                        continue; // voltar para menutransacoes()
+                    }
+
+                    break;
+                    
+                    case '3':
+
+                    do {
+                    printf("\tEscolha uma das opções abaixo: \n ");
+                    printf("[1] Exibir lista de transações por ID\n");
+                    printf("[2] Voltar para o menu \n");
+                    scanf(" %c",&escolha3);
+
+                    if (escolha3 < '1' || escolha3 > '2'){  // inicio | para erros
+                        printf("%s", texto);
+                        system("pause");
+                        limparTela();
+                    }
+                    } while (escolha3 < '1' || escolha3 > '2'); // fim | para erros
+
+                    if (escolha3 == '1'){
+
+                        //usuario escolhe qual transação vai querer editar
+                        //lista atualizada de transações é exibida
+                        //opção de editar algum item
+
+                    } else{
+
+                        returnmenu();
+                        limparTela();
+                        continue;
+
+                    }
+                    break; 
+
+                    case '4':
+
+                    do {
+                    printf("\tEscolha uma das opções abaixo: \n ");
+                    printf("[1] Exibir lista de transações por ID\n");
+                    printf("[2] Voltar para o menu \n");
+                    scanf(" %c",&escolha4);
+
+                    if (escolha4 < '1' || escolha4 > '2') {   // inicio | para erros
+                        printf("%s", texto);
+                        system("pause");
+                        limparTela();
+                    }
+                    } while (escolha4 < '1' || escolha4 > '2'); // fim | para erros
+
+                    if(escolha4 == '1'){
+                        //usuário escolhe qual transação quer exluir
+                        //outras funionalidade...
+                    } else {
+
+                        returnmenu();
+                        limparTela();
+                        continue;
+                    }
+
+                 default:
+                    break;
+                 }
+
+            } while (opcao != '0');
+
+            return 0;
+
+    }
+
+    //============ Função transação ============
+    int menutransacoes(){
+
+        char escolha;
+
+        do {
+        limparTela();
+    printf("\n------- TRANSAÇÕES -------\n");
+    printf("[1] Registrar transação\n");
+    printf("[2] Listar transações\n");
+    printf("[3] Editar transação\n");
+    printf("[4] Excluir transação\n");
+    printf("[0] Sair\n");
+    printf("Escolha: ");
+
+    scanf(" %c",&escolha);
+    if (escolha < '0' || escolha > '4'){
+        printf("%s", texto);
+        system("pause");
+    }
+        } while (escolha < '1' || escolha > '4');
+
+    system("pause");
+    limparTela();
+
+    return escolha;
+    }
+
+    //=============== Função retornar ==============
+    int escolhadousuario (){
+
+        char retorno;
+
+        do {
+        printf("\tVocê deseja: \n");
+        printf("[1] Retornar para o menu de transações\n");
+        printf("[2] Retornar para o menu principal \n");
+        scanf(" %c",&retorno);
+
+            if (retorno < '1' || retorno > '2'){ // inicio | para erros
+                printf("%s", texto);
+                system("pause");
+                limparTela();
+            }
+
+        } while (retorno < '1' || retorno > '2'); // fim | para erros
+
+        return retorno;
+    }
+    //=============== Função Limpar tela =============
+    void limparTela() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        system("clear");
+    #endif
+}
+
+    //=============== Fução para retornar para o menu =============
+    void returnmenu(){
+        
+        printf("\n\tVoltando para o menu inicial...\n");
+        system("pause");
+
+    }
