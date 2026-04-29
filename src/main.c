@@ -3,10 +3,13 @@
 #include "usuario.h"
 #include "sistema.h"
 #include "utils.h"
+#include "db.h"
 
 int main()
 {
     int n;
+
+    db_init();
 
     do
     {
@@ -47,5 +50,6 @@ int main()
 
     } while (n != 3);
 
+    db_close();
     return 0;
 }
