@@ -1,41 +1,40 @@
 # FICR---Sistema-de-controle-financeiro
 Projeto realizado na cadeira de Residência I, no curso de Análise e Desenvolvimento de Sistemas
 
-## 📌 Funcionalidades
+## Funcionalidades
 
+- Cadastro e Login de usuários
 - Adicionar transações (receitas e despesas)
 - Listar transações
 - Deletar transações por ID
 - Calcular saldo total
 
-**Em desenvolvimento:**
-- Buscar transações (por data ou categoria)
-- Resumo por categoria
-- Sistema de login
-
-## 🛠️ Tecnologias
+## Tecnologias
 
 - Linguagem C
-- Manipulação de arquivos (persistência de dados)
+- SQLite (persistência de dados)
 
-## 💾 Armazenamento
+## Estrutura
 
-Os dados são salvos localmente em arquivos (`.txt` ou `.dat`).
-
-## 📁 Estrutura inicial
-
-```bash
+```
 /src        -> Código fonte
 /include    -> Headers (.h)
-/data       -> Arquivos de armazenamento
+/db         -> SQLite + banco de dados
 /docs       -> Documentação
 ```
 
-## 📌 Status
+## Compilar
 
-🚧 Projeto em desenvolvimento
+```bash
+make
+```
 
-## 🤝 Equipe
+Ou manualmente:
+```bash
+gcc -D_WIN32_WINNT=0x0501 -o main.exe src/main.c src/sistema.c src/usuario.c src/transacao.c src/transacao_acoes.c src/despesas.c src/despesas_acoes.c src/utils.c db/db.c db/sqlite3.c -I include -I db -Wall
+```
+
+## Equipe
 
 <table>
   <tr>

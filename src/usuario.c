@@ -3,6 +3,8 @@
 #include <string.h>
 #include "usuario.h"
 #include "utils.h"
+#include "db.h"
+#include "sqlite3.h"
 
 Usuario userLogado;
 
@@ -110,6 +112,7 @@ int registro()
 
         if (strcmp(senhacom, userLogado.senha) == 0)
         {
+            db_salvar_usuario(&userLogado);
             limparTela();
             printf("Usuario cadastrado com sucesso!\n");
             pausar();
@@ -130,6 +133,8 @@ int login()
 {
     char senhalogin[100];
     char cpflogin[12];
+    Usuario u;
+    int resultado;
 
     limparTela();
 
@@ -140,14 +145,17 @@ int login()
         removerQuebraLinha(cpflogin);
         limparBuffer();
 
-        if (strcmp(cpflogin, userLogado.cpf) == 0)
+        resultado = db_buscar_usuario_por_cpf(cpflogin, &u);
+
+        if (resultado == SQLITE_OK)
         {
             printf("Digite a sua senha: ");
             fgets(senhalogin, sizeof(senhalogin), stdin);
             removerQuebraLinha(senhalogin);
 
-            if (strcmp(senhalogin, userLogado.senha) == 0)
+            if (strcmp(senhalogin, u.senha) == 0)
             {
+                userLogado = u;
                 limparTela();
                 printf("Logado com sucesso!\n");
                 pausar();
